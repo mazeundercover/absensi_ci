@@ -177,7 +177,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small"><?=(isset($_SESSION) ? $_SESSION['auth']['NAMA_USER'] : ''); ?> | <strong><?=(isset($_SESSION) ? $_SESSION['auth']['LEVEL_USER'] : '')?></strong></span>
+                <span class="mr-2 d-none d-lg-inline small"><?=(isset($_SESSION) && isset($_SESSION['auth']) ? $_SESSION['auth']['NAMA_USER'] : ''); ?> | <strong><?=(isset($_SESSION) && isset($_SESSION['auth']) ? $_SESSION['auth']['LEVEL_USER'] : '')?></strong></span>
                 <img class="img-profile rounded-circle" src="<?=base_url('/images/user.jpg');?>">
               </a>
               <!-- Dropdown - User Information -->

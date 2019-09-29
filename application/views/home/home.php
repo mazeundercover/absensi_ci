@@ -9,4 +9,4 @@
   <p class="lead">Aplikasi absensi siswa SMK Sawunggalih berbasis Web.</p>
 </div>
 
-<img src="<?=base_url('/images/4.jpg');?>" class="img-fluid" alt="Responsive image">
+<img src="<?=base_url('/images/4.jpg');?>" class="img-fluid" alt="Sekolah">

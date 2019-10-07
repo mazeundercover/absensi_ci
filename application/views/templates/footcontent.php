@@ -4,7 +4,7 @@
       <!-- Footer -->
       <footer class="sticky-footer bg-info">
         <div class="container my-auto">
-          <div class="copyright text-center my-auto">
+          <div class="copyright text-center my-auto text-white">
             <span>Copyright &copy; Aplikasi Absensi 2019</span>
           </div>
         </div>
@@ -20,9 +20,9 @@
   </a>
 
 <?php
-  $this->view('modals/logout',$data);
+  $this->load->view('modals/logout');
 ?>
 
 <?php
-  $this->view('templates/footer',$data);
+  $this->load->view('templates/footer');
 ?>

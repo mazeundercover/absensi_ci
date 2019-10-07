@@ -20,15 +20,14 @@
       <hr class="sidebar-divider my-0">
 
       <?php
-        $urlpage = 'home';
-        if (isset($_GET['url'])) {
-          $url = rtrim($_GET['url'],'/');
-          $url = filter_var($url, FILTER_SANITIZE_URL);
-          $url = explode('/',$url);
-          $urlpage = $url[0];
-          $ulrctrl = !isset($url[1]) ? 'index' : $url[1];
-          // return $url;
+        
+        $urisegment = $this->uri->segment(0);
+        if ($urisegment=='') {
+          $urlpage = 'home';
+        } else {
+          $urlpage = $urisegment;
         }
+        echo $urisegment;
       ?>
 
       <!-- Nav Item - Dashboard -->
@@ -39,7 +38,7 @@
       </li>
 
       <?php
-      if(isset($_SESSION['auth']) && ($_SESSION['auth']['LEVEL_USER'] == 'ADMIN' || $_SESSION['auth']['LEVEL_USER'] == 'BK')) {
+      if(($_SESSION['level'] == 'ADMIN' || $_SESSION['level'] == 'BK')) {
       ?>
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -51,13 +50,13 @@
 
       <!-- Nav Item - Absensi -->
       <li class="nav-item <?=$urlpage=='absensi' ? 'active' : '';?>">
-        <a class="nav-link" href="<?=base_url('/absensi');?>">
+        <a class="nav-link" href="<?=base_url('/absensi/data_kelas');?>">
           <i class="fas fa-fw fa-bell"></i>
           <span>Absensi</span></a>
       </li>
 
       <?php
-      if(isset($_SESSION['auth']) && $_SESSION['auth']['LEVEL_USER'] == 'ADMIN') {
+      if($_SESSION['level'] == 'ADMIN') {
       ?>
       <!-- Nav Item - Siswa -->
       <li class="nav-item <?=$urlpage=='siswa' ? 'active' : '';?>">
@@ -186,14 +185,6 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <!-- <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -207,4 +198,4 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid pr-0">

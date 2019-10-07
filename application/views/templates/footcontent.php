@@ -21,8 +21,5 @@
 
 <?php
   $this->load->view('modals/logout');
-?>
-
-<?php
   $this->load->view('templates/footer');
 ?>

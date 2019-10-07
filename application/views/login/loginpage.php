@@ -40,18 +40,15 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                   </div>
-                  <?php
-                    // Cek cookie
-                    if(isset($data['session']['error_login'])){ // Jika ada
-                      echo '<p class="text-white text-center bg-danger mt-1">'.$data['session']['error_login'].'</p>';
-                    }
-                  ?>
+                  <?php if ($this->session->flashdata('error_loginform')) { ?>
+                    <div class="text-white text-center bg-danger py-1 rounded mb-3"><?= $this->session->flashdata('error_loginform') ?></div>
+                  <?php } ?>
                   <form class="user" method="post" action="<?=base_url('/absensi/ceklogin');?>">
                     <div class="form-group">
-                      <input type="text" class="form-control form-control-user" id="username" name="login_user" aria-describedby="emailHelp" placeholder="Username">
+                      <input value="<?=($this->session->flashdata('error_loginform')) ? $this->session->flashdata('username') : '' ?>" type="text" class="form-control form-control-user" id="username" name="username" aria-describedby="emailHelp" placeholder="Username">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" name='login_pass' id="password" placeholder="Password">
+                      <input type="password" class="form-control form-control-user" name='password' id="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">

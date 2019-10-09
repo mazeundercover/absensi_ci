@@ -79,5 +79,12 @@ class Absensi extends CI_Controller {
 			}
           }
 	}
-	
+
+	public function data_kelas() {
+		$this->data['header']['title'] = "Absensi Kelas";
+		$this->load->view('templates/headcontent',$this->data);
+		$this->load->view('absensi/kelas');
+		$this->load->view('templates/footcontent');
+	}
+
 }

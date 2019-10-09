@@ -21,13 +21,18 @@
 
       <?php
         
-        $urisegment = $this->uri->segment(0);
+        $urisegment = $this->uri->segment(1);
+        $urisegment1 = $this->uri->segment(2);
         if ($urisegment=='') {
           $urlpage = 'home';
         } else {
-          $urlpage = $urisegment;
+          if ($urisegment=='absensi' && ($urisegment1=='' || $urisegment1=='index')) {
+            $urlpage = 'home';
+          } else {
+            $urlpage = $urisegment;
+          }
         }
-        echo $urisegment;
+        // echo $urisegment1;
       ?>
 
       <!-- Nav Item - Dashboard -->
@@ -73,10 +78,10 @@
       </li>
       
       <!-- Nav Item - Guru -->
-      <li class="nav-item <?=$urlpage=='guru' ? 'active' : '';?>">
-        <a class="nav-link" href="<?=base_url('/guru');?>">
+      <li class="nav-item <?=$urlpage=='wali' ? 'active' : '';?>">
+        <a class="nav-link" href="<?=base_url('/wali');?>">
           <i class="fas fa-fw fa-chalkboard-teacher"></i>
-          <span>Guru / Wali Kelas</span></a>
+          <span>Wali Kelas</span></a>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
@@ -198,4 +203,4 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid pr-0">
+        <div class="container-fluid pr-3">
